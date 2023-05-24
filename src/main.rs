@@ -2,7 +2,7 @@
 use rand::Rng;
 use raylib::prelude::*;
 
-//TODO: seperate to multiple src files
+//TODO: add customization menu using egui
 
 fn main() {
     let mut rng = rand::thread_rng();
@@ -40,7 +40,7 @@ fn main() {
             let state = grid[i as usize][j as usize];
             // Count live neighbors!
             let sum = 0;
-            let neighbors = countNeighbors(grid.clone(), i, j,cols,rows);
+            let neighbors = count_neighbors(grid.clone(), i, j,cols,rows);
 
             if state == 0 && neighbors == 3 {
                 next[i as usize][j as usize] = 1;
@@ -74,7 +74,7 @@ fn make_grid(cols: i32,rows: i32)-> Vec<Vec<u64>> {
     return vec;
 }
 
-fn countNeighbors(grid: Vec<Vec<u64>>, x: i32, y: i32,cols: i32, rows: i32) -> u64 {
+fn count_living_neighbors(grid: Vec<Vec<u64>>, x: i32, y: i32,cols: i32, rows: i32) -> u64 {
   let mut sum = 0;
   for i in 0..3 {
     for j in 0..3 {
