@@ -16,11 +16,22 @@ fn main() {
         }
     }
 
-    let (mut rl, thread) = open_window(win_props,"Input");
+    let (mut rl, thread) = open_window(win_props.clone(),"Input");
     rl.set_target_fps(60);
     while !rl.window_should_close() {
         let mut d = rl.begin_drawing(&thread);
         d.clear_background(Color::BLACK);
+
+        for i in 0..cols {
+            for j in 0..rows {
+                let x = i * win_props[2];
+                let y = j * win_props[2];
+                if grid[i as usize][j as usize] == 1 {
+                    d.draw_rectangle(x, y, win_props[2] - 1, win_props[2] - 1, Color::WHITE);
+                }          
+            }
+        }
+
     }
 }
 
