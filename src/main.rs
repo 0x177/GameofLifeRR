@@ -40,7 +40,7 @@ fn main() {
             let state = grid[i as usize][j as usize];
             // Count live neighbors!
             let sum = 0;
-            let neighbors = count_neighbors(grid.clone(), i, j,cols,rows);
+            let neighbors = count_living_neighbors(grid.clone(), i, j,cols,rows);
 
             if state == 0 && neighbors == 3 {
                 next[i as usize][j as usize] = 1;
